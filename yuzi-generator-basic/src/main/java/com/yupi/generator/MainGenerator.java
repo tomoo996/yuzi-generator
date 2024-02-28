@@ -1,8 +1,10 @@
 package com.yupi.generator;
 
 import com.yupi.model.MainTemplateConfig;
+import freemarker.template.TemplateException;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  * @author yupi
@@ -10,21 +12,40 @@ import java.io.File;
 public class MainGenerator {
 
     public static void main(String[] args) throws Exception {
-        String projectPath = System.getProperty("user.dir");
-        //输入路径
-        String inputPath = projectPath + File.separator + "yuzi-generator-demo-projects" + File.separator + "acm-template";
-        //输出路径
-        String outputPath = projectPath;
-        //复制
-        StaticGenerator.copyFilesByRecursive(inputPath , outputPath);
-
-        //动态文件生成
-        String dynamicinputPath = projectPath + File.separator + "yuzi-generator-basic" + File.separator + "src/main/resources/templates/MainTemplate.java.ftl";
-        String dynamicoutputPath = projectPath + File.separator + "acm-template/src/com/yupi/acm/MainTemplate.java";
         MainTemplateConfig mainTemplateConfig = new MainTemplateConfig();
         mainTemplateConfig.setAuthor("yupi");
         mainTemplateConfig.setLoop(false);
-        mainTemplateConfig.setOutputText("求和结果:");
-        DynamicGenerator.doGenerate(dynamicinputPath,dynamicoutputPath, mainTemplateConfig);
+        mainTemplateConfig.setOutputText("求和结果：");
+        doGenerate(mainTemplateConfig);
+    }
+
+    /**
+     * 生成
+     *
+     * @param model 数据模型
+     * @throws TemplateException
+     * @throws IOException
+     */
+    public static void doGenerate(Object model) throws Exception {
+        String inputRootPath = "D:\\yiziCode\\yuzi-generator\\yuzi-generator-demo-projects\\acm-template-pro";
+        String outputRootPath = "D:\\yiziCode\\yuzi-generator";
+
+        String intputPath;
+        String outputPath;
+
+        intputPath = new File(inputRootPath , "src/com/yupi/acm/MainTemplate.java.ftl").getAbsolutePath();
+        outputPath = new File(outputRootPath , "src/com/yupi/acm/MainTemplate.java").getAbsolutePath();
+        // 生成动态文件
+        DynamicGenerator.doGenerate(intputPath, outputPath, model);
+
+        intputPath = new File(inputRootPath , ".gitignore").getAbsolutePath();
+        outputPath = new File(outputRootPath , ".gitignore").getAbsolutePath();
+        // 生成静态文件
+        StaticGenerator.copyFilesByHutool(intputPath, outputPath);
+
+        intputPath = new File(inputRootPath , "README.md").getAbsolutePath();
+        outputPath = new File(outputRootPath , "README.md").getAbsolutePath();
+        // 生成静态文件
+        StaticGenerator.copyFilesByHutool(intputPath, outputPath);
     }
 }
