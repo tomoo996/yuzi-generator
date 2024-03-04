@@ -4,14 +4,18 @@ import java.io.*;
 
 public class JarGenerator {
 
-    public static void doGenerate(String projectDir) throws IOException, InterruptedException {
+    public static Integer doGenerate(String projectDir) throws IOException, InterruptedException {
+        String OSName = System.getProperty("os.name");
         // 调用 process 类执行 Maven 打包命令
-        String winMavenCommand = "mvn.cmd clean package -DskipTests=true";
-        String otherMavenCommand = "mvn clean package -DskipTests=true";
-        String MavenCommand = winMavenCommand;
+        String MavenCommand;
+        if (OSName.contains("Windows")) {
+            MavenCommand = "mvn.cmd clean package -DskipTests=true";
+        } else {
+            MavenCommand = "mvn clean package -DskipTests=true";
+        }
 
         ProcessBuilder processBuilder = new ProcessBuilder(MavenCommand.split(" "));
-        processBuilder.directory(new File(projectDir));
+        processBuilder.directory(new File(projectDir)); // 设置工作目录
 
         Process process = processBuilder.start();
 
@@ -24,11 +28,10 @@ public class JarGenerator {
         }
 
         int exitCode = process.waitFor();
-        System.out.println("命令执行结束,退出码:" + exitCode);
-    }
 
-    public static void main(String[] args) throws IOException, InterruptedException {
-        doGenerate("D:\\yiziCode\\yuzi-generator\\yuzi-generator-basic");
+        System.out.println("命令执行结束,退出码:" + exitCode);
+
+        return exitCode;
     }
 
 }

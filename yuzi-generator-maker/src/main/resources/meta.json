@@ -5,9 +5,11 @@
   "version": "1.0",
   "author": "yupi",
   "createTime": "2023-11-22",
+  "gitInit": true,
   "fileConfig": {
-    "inputRootPath": "D:/yiziCode/yuzi-generator/yuzi-generator-demo-projects/acm-template-pro",
-    "outputRootPath": "D:/yiziCode/yuzi-generator/generated",
+    "inputRootPath": ".source/acm-template-pro",
+    "outputRootPath": "generated",
+    "sourceRootPath": "D:/yiziCode/yuzi-generator/yuzi-generator-demo-projects/acm-template-pro",
     "type": "dir",
     "files": [
       {
