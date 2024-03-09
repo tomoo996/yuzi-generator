@@ -10,6 +10,11 @@ import lombok.Data;
 public class DataModel {
 
     /**
+     * 是否需要生成.gitignore文件
+     */
+    private boolean needGit = true;
+
+    /**
      * 是否循环（开关）
      */
     private boolean loop;

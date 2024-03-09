@@ -4,7 +4,7 @@ import java.io.*;
 
 public class JarGenerator {
 
-    public static Integer doGenerate(String projectDir) throws IOException, InterruptedException {
+    public static void doGenerate(String projectDir) throws IOException, InterruptedException {
         String OSName = System.getProperty("os.name");
         // 调用 process 类执行 Maven 打包命令
         String MavenCommand;
@@ -30,8 +30,6 @@ public class JarGenerator {
         int exitCode = process.waitFor();
 
         System.out.println("命令执行结束,退出码:" + exitCode);
-
-        return exitCode;
     }
 
 }
