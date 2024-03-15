@@ -1,6 +1,5 @@
 package com.yupi.maker.generator.file;
 
-import com.yupi.maker.model.DataModel;
 import freemarker.template.TemplateException;
 
 import java.io.File;
@@ -10,14 +9,6 @@ import java.io.IOException;
  * @author yupi
  */
 public class FileGenerator {
-
-    public static void main(String[] args) throws Exception {
-        DataModel dataModel = new DataModel();
-        dataModel.setAuthor("yupi");
-        dataModel.setLoop(false);
-        dataModel.setOutputText("求和结果：");
-        doGenerate(dataModel);
-    }
 
     /**
      * 生成
