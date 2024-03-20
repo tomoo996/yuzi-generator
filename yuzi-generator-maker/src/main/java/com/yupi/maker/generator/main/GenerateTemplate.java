@@ -142,11 +142,6 @@ public abstract class GenerateTemplate {
         outputFilePath = outputPath + File.separator + "pom.xml";
         DynamicFileGenerator.doGenerate(inputFilePath, outputFilePath, meta);
 
-        // README.md
-        inputFilePath = inputResourcesPath + File.separator + "templates/README.md.ftl";
-        outputFilePath = outputPath + File.separator + "README.md";
-        DynamicFileGenerator.doGenerate(inputFilePath, outputFilePath, meta);
-
         // .gitignore
         if (meta.getGitInit()) {
             inputFilePath = inputResourcesPath + File.separator + "templates/.gitignore.ftl";
