@@ -7,6 +7,7 @@ import { Helmet, history, useModel } from '@umijs/max';
 import { message, Tabs } from 'antd';
 import React, { useState } from 'react';
 import Settings from '../../../../config/defaultSettings';
+import {Link} from "umi";
 
 const Login: React.FC = () => {
   const [type, setType] = useState<string>('account');
@@ -64,9 +65,9 @@ const Login: React.FC = () => {
             minWidth: 280,
             maxWidth: '75vw',
           }}
-          logo={<img alt="logo" style={{ height: '100%' }} src="/logo.svg" />}
-          title="鱼皮前端万用模板"
-          subTitle={'快速开发属于自己的前端项目'}
+          logo={<img alt="logo" style={{ height: '100%' }} src="/logo.jpg" />}
+          title="鱼籽代码生成"
+          subTitle={'代码生成器在线制作共享，大幅提升开发效率'}
           initialValues={{
             autoLogin: true,
           }}
@@ -124,7 +125,8 @@ const Login: React.FC = () => {
               textAlign: 'right',
             }}
           >
-            <a>新用户注册</a>
+            {/* eslint-disable-next-line react/jsx-no-undef */}
+            <Link to="/user/register">新用户注册</Link>
           </div>
         </LoginForm>
       </div>

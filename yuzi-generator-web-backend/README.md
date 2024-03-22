@@ -1,4 +1,4 @@
-# SpringBoot 项目初始模板
+# 鱼籽代码生成器 web 后端
 
 > 作者：[程序员鱼皮](https://github.com/liyupi)
 > 仅分享于 [编程导航知识星球](https://yupi.icu)
