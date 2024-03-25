@@ -1,5 +1,5 @@
 import Footer from '@/components/Footer';
-import { userLogin } from '@/services/backend/userController';
+import { userLoginUsingPost } from '@/services/backend/userController';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { LoginForm, ProFormText } from '@ant-design/pro-components';
 import { useEmotionCss } from '@ant-design/use-emotion-css';
@@ -7,7 +7,7 @@ import { Helmet, history, useModel } from '@umijs/max';
 import { message, Tabs } from 'antd';
 import React, { useState } from 'react';
 import Settings from '../../../../config/defaultSettings';
-import {Link} from "umi";
+import { Link } from 'umi';
 
 const Login: React.FC = () => {
   const [type, setType] = useState<string>('account');
@@ -27,7 +27,7 @@ const Login: React.FC = () => {
   const handleSubmit = async (values: API.UserLoginRequest) => {
     try {
       // 登录
-      const res = await userLogin({
+      const res = await userLoginUsingPost({
         ...values,
       });
 
