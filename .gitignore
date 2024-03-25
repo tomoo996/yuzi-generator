@@ -6,6 +6,7 @@ target
 generated
 yuzi-generator.iml
 
+
 ### Java template
 # Compiled class file
 *.class
@@ -130,3 +131,4 @@ fabric.properties
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
 
+/yuzi-generator-web-backend/src/main/resources/application-local.yml
